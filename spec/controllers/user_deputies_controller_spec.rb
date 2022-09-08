@@ -6,7 +6,7 @@ RSpec.describe UserDeputiesController, type: :controller do
 
   before { allow(User).to receive(:current).and_return(current_user) }
 
-  describe 'before_filter' do
+  describe 'before_action' do
     let(:filter) { described_class._process_action_callbacks.select {|c| c.filter == :get_entry }.first }
     specify ':get_entry, except: [:index, :set_availabilities]' do
       expect(filter.kind).to eq(:before)
